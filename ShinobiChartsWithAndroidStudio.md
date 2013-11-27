@@ -1,6 +1,6 @@
-# Using ShinobiCharts with Android Studio
+## Using ShinobiCharts with Android Studio
 
-## Introduction
+### Introduction
 
 Android Studio is a development environment from Google, which will eventually
 replace the eclipse ADT in terms of the recommended tool for creating android
@@ -22,7 +22,7 @@ within Android Studio, including creating a really simple demo pie chart.
 > officially released then ShinobiCharts for Android will be updated so that it
 > works seamlessly.
 
-## Create a project
+### Create a project
 
 Create a new project in Android Studio, setting the name and other details appropriately:
 
@@ -30,7 +30,7 @@ Create a new project in Android Studio, setting the name and other details appro
 
 The remaining settings in the new project wizard can be left as default.
 
-## Creating a module
+### Creating a module
 
 Copy the `shinobicharts-android-library` directory from the zip file you downloaded from
 the ShinobiControls website into the top level directory of your project. This needs
@@ -68,7 +68,7 @@ will allow you to select a module dependency:
 You can then select the `shinobicharts-android-library` module as a dependency, and
 close the `module settings` dialog.
 
-## Adding a gradle build file
+### Adding a gradle build file
 
 So far you've configured the IDE, but this doesn't yet link properly to the gradle
 build system. To do this you need to create a file which described the build process
@@ -141,7 +141,7 @@ The final few lines of code insert the new `nativeLibsToJar` task as a dependenc
 on the compile task, ensuring that the JAR of native libraries is build as part of
 the build process.
 
-## Adding Gradle dependencies
+### Adding Gradle dependencies
 
 The main project depends on the `shinobicharts-android-library` module, so this has
 to be specified in its `gradle.build` file. Update the `dependencies` section so that
@@ -162,7 +162,7 @@ a build step. Update the `settings.gradle` to match:
     include ':shinobicharts-android-library', ':ShinobiChartsWithAndroidStudio'
 
 
-## Updating the manifest
+### Updating the manifest
 
 If you try and build the project now, you'll hit a problem with manifest merging:
 
@@ -209,7 +209,7 @@ Now the project will build:
 
 ![image](img/compilation_succeeded.png)
 
-## Test it out
+### Test it out
 
 Although the project builds, it doesn't actually demonstrate that the library has
 been successfully imported. To do this you're going to create a simple pie chart.
@@ -286,7 +286,7 @@ like the following:
 ![Pie Chart Sample](img/pie_chart_sample.png)
 
 
-## Conclusion
+### Conclusion
 
 If you've followed this tutorial then you have successfully integrated
 ShinobiCharts for Android with AndroidStudio. This is great! Now you can use the
