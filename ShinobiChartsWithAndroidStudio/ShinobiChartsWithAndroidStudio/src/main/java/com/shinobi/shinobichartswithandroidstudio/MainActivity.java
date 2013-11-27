@@ -11,6 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
+import com.shinobicontrols.charts.ChartFragment;
+import com.shinobicontrols.charts.DataAdapter;
+import com.shinobicontrols.charts.DataPoint;
+import com.shinobicontrols.charts.PieSeries;
+import com.shinobicontrols.charts.ShinobiChart;
+import com.shinobicontrols.charts.SimpleDataAdapter;
+
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -19,9 +26,24 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
+
+            ChartFragment chartFragment = (ChartFragment) getFragmentManager()  // 1
+                    .findFragmentById(R.id.chart);
+
+            ShinobiChart shinobiChart = chartFragment.getShinobiChart();        // 2
+            shinobiChart.setTitle("A Piece of the Pie");                        // 3
+
+            shinobiChart.setLicenseKey("<PUT YOUR LICENSE KEY HERE>");          // 4
+
+            DataAdapter<String, Double> dataAdapter = new SimpleDataAdapter<String, Double>();
+            dataAdapter.add(new DataPoint<String, Double>("cherry", 5.0));      // 5
+            dataAdapter.add(new DataPoint<String, Double>("apple", 12.0));
+            dataAdapter.add(new DataPoint<String, Double>("chicken", 4.0));
+            dataAdapter.add(new DataPoint<String, Double>("beef", 3.0));
+
+            PieSeries series = new PieSeries();                                 // 6
+            series.setDataAdapter(dataAdapter);
+            shinobiChart.addSeries(series);                                     // 7
         }
     }
 
@@ -44,22 +66,6 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
     }
 
 }
