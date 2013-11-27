@@ -2,7 +2,25 @@
 
 ## Introduction
 
-Write an introduction here.
+Android Studio is a development environment from Google, which will eventually
+replace the eclipse ADT in terms of the recommended tool for creating android
+apps. It's currently available as an early access preview on
+[developer.android.com](http://developer.android.com/sdk/installing/studio.html),
+and is being improved on a daily basis. Therefore it is probably not recommended
+for production code, but for those of us who consider themselves early-adopters
+it's fun to use it immediately. Naturally you'll want to use ShinobiCharts for
+Android in Android Studio, and when you try it you'll notice that it isn't
+currently as simple as you might hope. This is partially because of the new
+gradle-based build system not yet being able to cope with libraries which contain
+a binary component.
+
+This blog post will explain how to get ShinobiCharts for Android working from
+within Android Studio, including creating a really simple demo pie chart.
+
+> __Please note:__ Android Studio is changing on very regular basis. These
+> instructions are not expected to work indefinitely. Once Android Studio is
+> officially released then ShinobiCharts for Android will be updated so that it
+> works seamlessly.
 
 ## Create a project
 
