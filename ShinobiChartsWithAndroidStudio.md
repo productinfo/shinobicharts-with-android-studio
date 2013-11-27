@@ -30,48 +30,14 @@ Create a new project in Android Studio, setting the name and other details appro
 
 The remaining settings in the new project wizard can be left as default.
 
-### Creating a module
-
-Copy the `shinobicharts-android-library` directory from the zip file you downloaded from
-the ShinobiControls website into the top level directory of your project. This needs
-adding as a module dependency to the `ShinobiChartsWithAndroidStudio` project.
-
-To create a module right click on the top-level project in the navigator and select
-`Open Module Settings`:
-
-![image](img/open_module_settings.png)
-
-This opens the module settings dialog, which allows modules to be defined, and their
-inter-dependencies specified. Click the `+` to add a new module, and specify that it will
-be imported:
-
-![image](img/import_module.png)
-
-Now select the location of the library directory you copied:
-
-![image](img/select_library_location.png)
-
-The default settings should be accepted for the remainder of the import module wizard.
-
-Now that the module has been created you need to specify that it is a library - to do
-this select the module in the menu on the left, and tick the `Library module` checkbox:
-
-![image](img/select_library_module.png)
-
-Now that the module has been created, you need to set it as a dependency of the main
-project. Select the main project module in the list on the left hand side, and then the
-dependencies tab on the right hand side. Clicking on the `+` at the bottom of the list
-will allow you to select a module dependency:
-
-![image](img/add_module_dependency.png)
-
-You can then select the `shinobicharts-android-library` module as a dependency, and
-close the `module settings` dialog.
 
 ### Adding a gradle build file
 
-So far you've configured the IDE, but this doesn't yet link properly to the gradle
-build system. To do this you need to create a file which described the build process
+Eventually it will be possible to use the IDE to add a module dependency, but this
+area is currently under heavy development. Therefore instructions would need to
+change regularly. Instead, you're going to configure the underlying gradle build
+system, and then get the IDE to update itself from these settings.
+To do this you need to create a file which described the build process
 for the library module, and then specify that the build should build both projects.
 
 First right click on the `shinobicharts-android-library` in the project navigator,
@@ -105,7 +71,7 @@ dependencies. Edit the file and enter the following:
     }
 
     dependencies {
-        compile files('libs/shinobicharts-android-trial-1.1.2.jar')
+        compile files('libs/shinobicharts-android-trial-1.2.0.jar')
         compile files("$buildDir/native-libs/native-libs.jar")
     }
 
@@ -128,8 +94,8 @@ A lot of this file is boiler plate, the following describes some of the parts:
 - `android` sets the SDK version we're compiling against, and where to find the
 manifest file.
 - `dependencies` specifies what JAR dependencies this module has. The first line is the
-JAR which is part of the library, the second is a bit hacky - and is the native libs
-packaged up as a JAR.
+JAR which is part of the library (check the version number at the end of the file
+name), the second is a bit hacky - and is the native libs packaged up as a JAR.
 
 Gradle doesn't currently support compiling native library projects, so the current
 recommended workaround is to bundle them up into a JAR. The `nativeLibsToJar` task
@@ -144,7 +110,7 @@ the build process.
 ### Adding Gradle dependencies
 
 The main project depends on the `shinobicharts-android-library` module, so this has
-to be specified in its `gradle.build` file. Update the `dependencies` section so that
+to be specified in its `build.gradle` file. Update the `dependencies` section so that
 it matches the following:
 
     dependencies {
@@ -208,6 +174,15 @@ the following attribute to the `application` node within the manifest:
 Now the project will build:
 
 ![image](img/compilation_succeeded.png)
+
+
+### Updating the IDE settings from the gradle build files
+
+Finally, in order for the IDE to assist with code completion etc, it's necessary
+to tell the IDE to re-interpret the gradle build files. To do this click
+`Tools > Android > Sync Project with Gradle Files`:
+
+![image](img/sync-project-with-gradle.png)
 
 ### Test it out
 
