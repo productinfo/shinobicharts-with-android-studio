@@ -1,1 +1,1 @@
-include ':ShinobiChartsWithAndroidStudio'
+include ':shinobicharts-android-library', ':ShinobiChartsWithAndroidStudio'
