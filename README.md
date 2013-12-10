@@ -3,7 +3,7 @@
 This repo includes a sample project which has been configured to enable users to
 build apps which use ShinobiCharts for Android using Android Studio.
 
-It definitely works with Android Studio 0.3.6, but since Android Studio is currently
+It definitely works with Android Studio 0.3.7, but since Android Studio is currently
 in an early access preview state, expect it to break in upcoming releases.
 
 The accompanying writeup explains the steps to recreate this project, starting
