@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
             ShinobiChart shinobiChart = chartFragment.getShinobiChart();        // 2
             shinobiChart.setTitle("A Piece of the Pie");                        // 3
 
-            shinobiChart.setLicenseKey("<PUT YOUR LICENSE KEY HERE>");          // 4
+            shinobiChart.setTrialKey("<PUT YOUR TRIAL KEY HERE>");          // 4
 
             DataAdapter<String, Double> dataAdapter = new SimpleDataAdapter<String, Double>();
             dataAdapter.add(new DataPoint<String, Double>("cherry", 5.0));      // 5
