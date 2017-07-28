@@ -1,3 +1,5 @@
+**Please note: this project is from 2013 when Android Studio was still in beta. For the latest instructions on using shinobicharts with Android Studio, please see the [shinobicharts Android quick start guide](https://www.shinobicontrols.com/developer/charts/quick-start-guide-android).**
+
 # Using ShinobiCharts with Android Studio
 
 This repo includes a sample project which has been configured to enable users to
